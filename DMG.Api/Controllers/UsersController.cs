@@ -17,5 +17,14 @@ namespace DMG.Api.Controllers
             var userdto = userservice.GetUser(vat);
             return Ok(userdto);
         }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var userservice = new UserService();
+            var usersdto = userservice.GetAll();
+            return Ok(usersdto);
+        }
+
     }
 }
