@@ -11,6 +11,7 @@ namespace DMG.Business.Services
     public interface IUserService
     {
         UserDto GetUser(string vat);
+        IEnumerable<UserDto> GetAll();
 
     }
 
@@ -26,6 +27,17 @@ namespace DMG.Business.Services
 
            return userdto;
        }
+
+        public IEnumerable<UserDto> GetAll()
+        {
+            var userRepository = new UserRepository();
+            var allusers = userRepository.GetAll();
+
+            var mapper = new UserMapper();
+            var usersdto = mapper.Map(allusers);
+
+            return usersdto;
+        }
     }
 
 }

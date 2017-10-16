@@ -5,4 +5,5 @@
         public string Name { get; set; }
         public string Vat { get; set; }
     }
+
 }
