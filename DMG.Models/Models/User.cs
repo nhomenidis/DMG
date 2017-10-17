@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DMG.Models
 {
-    class User
+    public class User
     {
 
         public string UserID { get; set; }
