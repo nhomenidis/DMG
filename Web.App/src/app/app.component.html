@@ -1,0 +1,47 @@
+<nav class="navbar" *ngIf="user">
+  <div class="navbar-brand">
+    <a class="navbar-item title is-4 is-marginless" [routerLink]="['/home']">
+      Δημος Περιστερίου
+    </a>
+    <div class="navbar-burger burger" data-target="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div id="mobileMenu" class="mobileMenu navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" [routerLink]="['/profile']">
+        {{user.lastname}} {{user.name}}
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Menu
+        </a>
+        <div class="navbar-dropdown is-right is-boxed">
+          <a class="navbar-item " [routerLink]="['/debts']">
+            Πληρωμές
+          </a>
+          <a class="navbar-item">
+            Λογαριασμοί
+          </a>
+          <a class="navbar-item">
+            Διακανονισμοί
+          </a>
+          <a class="navbar-item">
+            Προφίλ
+          </a>
+          <hr class="navbar-divider">
+          <div class="navbar-item">
+            <a class="bd-view-all-versions" (click)="logout()">Aποσύνδεση</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<router-outlet></router-outlet>
+<ng-snotify></ng-snotify>

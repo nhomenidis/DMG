@@ -1,0 +1,72 @@
+<div class="container">
+  <section class="hero">
+    <div class="hero-body">
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <div>
+              <p class="title has-text-white">
+                {{user.lastname}} {{user.name}}</p>
+              <p class="heading has-text-white">
+                <i class="fa fa-envelope" title="email"></i> {{user.email}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="level-right is-hidden-mobile">
+          <div class="level-item">
+            <figure class="image is-128x128">
+              <img src="../../../assets/profile.png" />
+            </figure>
+          </div>
+        </div>
+      </nav>
+      <hr>
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading has-text-white">Λογαριασμοι</p>
+            <p class="title has-text-white">3,456</p>
+            <p>
+              <a class="button is-info is-xs is-outlined" [routerLink]="['/debts']">Εμφάνιση</a>
+            </p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading has-text-white">Διακανονισμοι</p>
+            <p class="title has-text-white">123</p>
+            <p>
+              <a class="button is-info is-xs is-outlined">Εμφάνιση</a>
+            </p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading has-text-white">Πληρωμες</p>
+            <p class="title has-text-white">456K</p>
+            <p>
+              <a class="button is-info is-xs is-outlined">Εμφάνιση</a>
+            </p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="heading has-text-white">Κατι</p>
+            <p class="title has-text-white">789</p>
+            <p>
+              <a class="button is-info is-xs is-outlined">Εμφάνιση</a>
+            </p>
+          </div>
+        </div>
+      </nav>
+      <hr>
+      <div class="has-text-centered has-text-white">
+        <p class="subtitle is-4 has-text-white">Προσώπικά Στοιχεία</p>
+        <p><span class="subtitle has-text-info is-6 ">Κινητό:</span>&nbsp;&nbsp; {{user.mobile}}</p>
+        <p><span class="subtitle has-text-info is-6">Α.Φ.Μ:</span>&nbsp;&nbsp; {{user.vat}}</p>
+        <p><span class="subtitle has-text-info is-6">Διεύθυνση:</span>&nbsp;&nbsp; {{user.address?.street}}</p>
+        <p><span class="subtitle has-text-info is-6">Δήμος:</span>&nbsp;&nbsp; {{user.address?.county}}</p>
+      </div>
+    </div>
+  </section>
+</div>
