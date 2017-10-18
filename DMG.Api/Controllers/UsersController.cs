@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DMG.Business.Services;
 using Microsoft.AspNetCore.Mvc;
+using DMG.Models;
 
 namespace DMG.Api.Controllers
 {
@@ -11,20 +11,43 @@ namespace DMG.Api.Controllers
     public class UsersController : Controller
     {
         [HttpGet("{vat}")]
-        public IActionResult Get(string vat)
+        public async Task<IActionResult> GetbyId(string vat)
         {
-            var userservice = new UserService();
-            var userdto = userservice.GetUser(vat);
-            return Ok(userdto);
+            try
+            {
+                var user = await db.UserRepository.GetById(id);
+
+
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+
+            }
+
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var userservice = new UserService();
-            var usersdto = userservice.GetAll();
-            return Ok(usersdto);
-        }
+    
 
+        [HttpPatch("{oldpass}/{newpass}")]
+        public IActionResult UpdateAccount(string oldpass, string newpass)
+        {
+            try
+            {
+
+
+             return Ok(true);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+
+            }
+         }
+    
     }
 }
+
+    
