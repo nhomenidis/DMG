@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace DMG.DataContext
+namespace DMG.DatabaseContext
 {
     public class DataContext : DbContext
     {

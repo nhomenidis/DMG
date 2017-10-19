@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMG.Api", "DMG.Api\DMG.Api.csproj", "{372AD440-8C3D-4F9B-BC21-CA84195A70E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMG.DataContext", "DMG.DataContext\DMG.DataContext.csproj", "{0564117B-AD4B-455F-A6E6-64C93D592939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMG.DatabaseContext", "DMG.DataContext\DMG.DatabaseContext.csproj", "{0564117B-AD4B-455F-A6E6-64C93D592939}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMG.Models", "DMG.Models\DMG.Models.csproj", "{5D610160-D663-4EDC-AB15-E86122B87424}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMG.Models", "DMG.Models\DMG.Models.csproj", "{5D610160-D663-4EDC-AB15-E86122B87424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMG.Business", "DMG.Business\DMG.Business.csproj", "{246A7659-B5DC-4D85-AAFE-09430B878F36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMG.Business", "DMG.Business\DMG.Business.csproj", "{246A7659-B5DC-4D85-AAFE-09430B878F36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DMG.AuthProvider", "DMG.AuthProvider\DMG.AuthProvider.csproj", "{9FC61BD7-830E-48A8-982A-6E24F76F0967}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DMG.AuthProvider", "DMG.AuthProvider\DMG.AuthProvider.csproj", "{9FC61BD7-830E-48A8-982A-6E24F76F0967}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

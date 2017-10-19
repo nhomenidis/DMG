@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DMG.DataContext\DMG.DataContext.csproj" />
+    <ProjectReference Include="..\DMG.DataContext\DMG.DatabaseContext.csproj" />
     <ProjectReference Include="..\DMG.Models\DMG.Models.csproj" />
   </ItemGroup>
 

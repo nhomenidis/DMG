@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using DMG.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DMG.Api.Controllers
 {
     [Route("api/users")]
 
-    public class BillsController : Controller
+    public class BillController : Controller
     {
 
         [HttpGet("{id}")]
@@ -18,9 +17,9 @@ namespace DMG.Api.Controllers
         {
             try
             {
-                var bill = await db.DebtRepository.GetById(id);
+               // var bill = await db.DebtRepository.GetById(id);
 
-                return Ok(debt);
+                return Ok();
             }
             catch (Exception ex)
             {
