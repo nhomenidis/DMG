@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DMG.Api.Controllers
 {
-    [Route("api/bills")]
+    [Route("api/payments")]
 
-    public class BillController : Controller
+    public class PaymentController : Controller
     {
 
         [HttpGet("{id}")]
@@ -17,9 +17,9 @@ namespace DMG.Api.Controllers
         {
             try
             {
-               var bill = await db.BillRepository.GetById(id);
+                var payment = await db.PaymentRepository.GetById(id);
 
-                return Ok(bill);
+                return Ok(payment);
             }
             catch (Exception ex)
             {
@@ -28,13 +28,13 @@ namespace DMG.Api.Controllers
         }
 
         [HttpGet("{UserId")]
-        public async Task<IActionResult> GetAll(string UserId)
+        public async Task<IActionResult> GetAll(string id)
         {
             try
             {
-                var bills = await db.BillRepository.GetAll(UserId);
+                var payments = await db.PaymentRepository.GetAll(id);
 
-                return Ok(bills);
+                return Ok(payments);
             }
             catch (Exception ex)
             {
