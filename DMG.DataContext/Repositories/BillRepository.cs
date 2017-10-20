@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace DMG.DatabaseContext.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class BillRepository : IRepository<Bill>
     {
-        private DbSet<User> dbSet;
+        private DbSet<Bill> dbSet;
 
-        public UserRepository(DataContext context)
+        public BillRepository(DataContext context)
         {
-            dbSet = context.Set<User>();
+            dbSet = context.Set<Bill>();
         }
 
-        public async Task<User> GetByUsername(string username)
+        // Get a bill list by a specific User
+        public async Task<ICollection<Bill>> GetByUser (User user)
         {
-            var entity = await dbSet.FirstOrDefaultAsync(x => x.Vat == username);
+            var  entity = await dbSet.FindAsync(user);
 
-            return entity;
+            return entity.User.Bills;
         }
 
+        // Remove a bill
         public async Task<bool> Delete(string id)
         {
             var entity = await dbSet.FindAsync(id);
@@ -31,29 +33,32 @@ namespace DMG.DatabaseContext.Repositories
             return true;
         }
 
-        public async Task<User> GetById(string id)
+        // Get bill by Id
+        public async Task<Bill> GetById(string id)
         {
             var entity = await dbSet.FindAsync(id);
 
             return entity;
         }
 
-        public async Task<User> Insert(User entity)
+        // Insert a bill
+        public async Task<Bill> Insert(Bill entity)
         {
             var user = await dbSet.AddAsync(entity);
 
             return user.Entity;
         }
 
-        public bool InsertMany(List<User> entities)
+        // Add many bills
+        public bool InsertMany(List<Bill> entities)
         {
             dbSet.AddRange(entities);
 
             return true;
         }
         
-
-        public User Update(User entity)
+        // Update a bill
+        public Bill Update(Bill entity)
         {
             var user = dbSet.Update(entity);
 
