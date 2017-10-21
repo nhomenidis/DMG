@@ -1,0 +1,37 @@
+<div class="bck-image">
+  <div class="bck-color">
+    <div class="columns is-marginless is-multiline">
+      <div class="column  is-4-desktop is-offset-7-desktop is-offset-0-tablet is-12-tablet">
+        <div class="card vcenter" [@glow]="effect">
+          <div class="card-content">
+            <p class="title has-text-white">
+              Pay & Go
+            </p>
+            <div class="field">
+              <span class="subtitle is-6 has-text-white">
+                Όνομα Χρήστη
+              </span>
+              <div class="control">
+                <input class="input" [(ngModel)]="username" type="text" >
+              </div>
+            </div>
+            <div class="field">
+              <span class="subtitle is-6 has-text-white">
+                Κωδικός
+              </span>
+              <div class="control">
+                <input class="input" (keyup.enter)="login()" [(ngModel)]="password" type="password" >
+              </div>
+            </div>
+            <div class="field">
+              <a class="is-link is-primary has-text-white">Ξεχάσατε τον κωδικό σας ?</a>
+            </div>
+            <div class="field is-clearfix">
+              <a class="button is-light is-pulled-right is-outlined" (click)="login()">Σύνδεση</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
