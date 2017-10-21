@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml;
 using DMG.Business.Dtos;
-using DMG.Model;
+using DMG.Models;
 
 namespace DMG.Business.Mappers
 {

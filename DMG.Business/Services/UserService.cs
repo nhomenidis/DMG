@@ -4,7 +4,7 @@ using System.Text;
 using DMG.Business.Database;
 using DMG.Business.Dtos;
 using DMG.Business.Mappers;
-using DMG.Model;
+using DMG.Models;
 
 namespace DMG.Business.Services
 {

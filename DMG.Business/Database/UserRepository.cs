@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DMG.Model;
+using DMG.Models;
 
 namespace DMG.Business.Database
 {

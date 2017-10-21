@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DMG.Model;
+using DMG.Models;
 
 namespace DMG.Business.Mappers
 {
