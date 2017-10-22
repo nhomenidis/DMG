@@ -5,6 +5,7 @@ using DMG.Business.Database;
 using DMG.Business.Dtos;
 using DMG.Business.Mappers;
 using DMG.Models;
+using DMG.AuthProvider;
 
 namespace DMG.Business.Services
 {
@@ -12,6 +13,7 @@ namespace DMG.Business.Services
     {
         UserDto GetUser(string vat);
         IEnumerable<UserDto> GetAll();
+        Boolean CheckPass(PasswordReset updatepass);
 
     }
 
@@ -38,6 +40,15 @@ namespace DMG.Business.Services
 
             return usersdto;
         }
+
+        public Boolean CheckPass(PasswordReset updatepass)
+        {
+            
+            return true;
+
+        }
+
+
     }
 
 }
