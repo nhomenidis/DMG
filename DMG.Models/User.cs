@@ -12,8 +12,10 @@ namespace DMG.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Vat { get; set; }
+        public string Password { get; set; }
+        
+        public AddressInfo AddressInfo { set; get;}
 
-        //navihgation properties
         public ICollection<Bill> Bills { get; set; }
         public ICollection<Settlement> Settlements { get; set; }
 

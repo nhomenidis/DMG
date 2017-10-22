@@ -8,9 +8,10 @@ namespace DMG.Models
     {
 
         public DateTime DatePerformed { set; get; }
-        public float Amount { get; set; }
+        public double Amount { get; set; }
         public string Method { set; get; }
 
+        public string BillID { get; set; }
         public Bill Bill { get; set; }
     }
 }
