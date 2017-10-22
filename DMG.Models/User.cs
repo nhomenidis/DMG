@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
 
 namespace DMG.Models
 {
@@ -25,4 +27,8 @@ namespace DMG.Models
             Settlements = new HashSet<Settlement>();
         }
     }
+
+    
+
+
 }
