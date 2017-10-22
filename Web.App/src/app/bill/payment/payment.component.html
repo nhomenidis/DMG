@@ -40,7 +40,7 @@
 
       <div class="columns is-marginless is-multiline">
         <div class="column is-12">
-          <app-debts-to-pay [debts]="debtsForPay" *ngIf="step == 0"></app-debts-to-pay>
+          <app-bills-to-pay [bills]="billsForPay" *ngIf="step == 0"></app-bills-to-pay>
           <app-credit-card [creditCard]="creditCard" *ngIf="step == 1"></app-credit-card>
           <app-payment-overview [creditCard]="creditCard" *ngIf="step == 2"></app-payment-overview>
         </div>

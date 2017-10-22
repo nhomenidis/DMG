@@ -15,7 +15,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class PaymentComponent implements OnInit, OnDestroy {
   private subscriptions = new Array<Subscription>();
-  debtsForPay: Array<Bill>;
+  billsForPay: Array<Bill>;
   creditCard = new CreditCard();
   user: User;
   step = 1;
@@ -43,8 +43,8 @@ export class PaymentComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(this.auth.user$
       .subscribe((user) => this.user = user));
-    this.subscriptions.push(this.billService.debtsToPay$
-      .subscribe((res) => this.debtsForPay = res));
+    this.subscriptions.push(this.billService.billsToPay$
+      .subscribe((res) => this.billsForPay = res));
   }
 
 }
