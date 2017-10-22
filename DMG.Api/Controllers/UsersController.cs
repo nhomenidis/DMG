@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DMG.AuthProvider;
 using DMG.Business.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,15 @@ namespace DMG.Api.Controllers
             var userservice = new UserService();
             var usersdto = userservice.GetAll();
             return Ok(usersdto);
+        }
+
+        [HttpPatch("{changePass}")]
+        public IActionResult UpdateAccount(PasswordReset newpass)
+        {
+            var userservice = new UserService();
+
+            return Ok();
+
         }
 
     }
