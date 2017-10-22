@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DMG.AuthProvider\DMG.AuthProvider.csproj" />
     <ProjectReference Include="..\DMG.Business\DMG.Business.csproj" />
     <ProjectReference Include="..\DMG.DataContext\DMG.DatabaseContext.csproj" />
   </ItemGroup>

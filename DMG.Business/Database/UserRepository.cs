@@ -19,7 +19,8 @@ namespace DMG.Business.Database
             {
                 Vat = "12345",  
                 FirstName = "Luca",
-                LastName = "Melis"
+                LastName = "Melis",
+                
             };
             var user2 = new User()
             {
