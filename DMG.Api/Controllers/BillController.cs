@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DMG.Api.Controllers
 {
-    [Route("api/bills")]
+    [Route("api/users")]
 
     public class BillController : Controller
     {
@@ -17,24 +17,9 @@ namespace DMG.Api.Controllers
         {
             try
             {
-               var bill = await db.BillRepository.GetById(id);
+               // var bill = await db.DebtRepository.GetById(id);
 
-                return Ok(bill);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest();
-            }
-        }
-
-        [HttpGet("{UserId")]
-        public async Task<IActionResult> GetAll(string UserId)
-        {
-            try
-            {
-                var bills = await db.BillRepository.GetAll(UserId);
-
-                return Ok(bills);
+                return Ok();
             }
             catch (Exception ex)
             {

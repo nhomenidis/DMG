@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DMG.DatabaseContext.Repositories
+namespace DMG.DatabaseContext
 {
     public class UserRepository : IRepository<User>
     {
