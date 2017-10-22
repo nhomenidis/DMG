@@ -7,14 +7,14 @@ export class User {
     password: string;
     mobile: string;
     address: Address;
-    debts: Array<Debt>;
+    bills: Array<Bill>;
 
     constructor() {
-        this.debts = new Array<Debt>();
+        this.bills = new Array<Bill>();
     }
 }
 
-export class Debt {
+export class Bill {
     id: string;
     description: string;
     billId: string;

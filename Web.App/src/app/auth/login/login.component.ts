@@ -20,7 +20,7 @@ import { LoaderService } from '../../shared/loader.service';
     trigger('glow', [
       state('low', style({
         boxShadow: '0px 0px 20px 4px rgba(255, 255, 255, 0.22)'
-        //backgroundColor: 'red'
+        // backgroundColor: 'red'
       })),
       state('high', style({
         boxShadow: '0px 0px 20px 4px rgba(255, 255, 255, 0.78)'
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    var vm = this;
+    const vm = this;
     setInterval(function () {
       vm.changeState();
     }, 2500);
@@ -67,16 +67,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loader.show();
     this.authService.login(this.username, this.password).subscribe(res => {
       if (res) {
-        this.loader.hide()
+        this.loader.hide();
         this.router.navigate(['/home']);
-        this.notify.error("Συνδεθήκατε", { icon: "../../../assets/check.png" })
+        this.notify.error('Συνδεθήκατε', { icon: '../../../assets/check.png' });
       } else {
         this.loader.hide();
-        this.notify.error("Λάθος όνομα χρήστη ή κωδικός!", { icon: "../../../assets/warning.png" })
+        this.notify.error('Λάθος όνομα χρήστη ή κωδικός!', { icon: '../../../assets/warning.png' });
       }
     }, error => {
       this.loader.hide();
-      this.notify.error("Λάθος όνομα χρήστη ή κωδικός!", { icon: "../../../assets/warning.png" })
+      this.notify.error('Λάθος όνομα χρήστη ή κωδικός!', { icon: '../../../assets/warning.png' });
     });
   }
 
@@ -84,5 +84,4 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.gloweffect = !this.gloweffect;
     this.effect = this.gloweffect ? 'low' : 'high';
   }
-
 }

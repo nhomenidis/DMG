@@ -4,19 +4,19 @@ import { RouterModule, Route } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
-import { DebtListComponent } from './debt-list/debt-list.component';
+import { BillListComponent } from './bill-list/bill-list.component';
 
-import { DebtService } from './debt.service';
+import { BillService } from './bill.service';
 import { AuthGuard } from '../auth/auth.guard';
-import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { PaymentComponent } from './payment/payment.component';
 import { PaymentListComponent } from './payment-list/payment-list.component';
-import { DebtsToPayComponent } from './debts-to-pay/debts-to-pay.component';
+import { BillsToPayComponent } from './bills-to-pay/bills-to-pay.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { PaymentOverviewComponent } from './payment-overview/payment-overview.component';
 
 const routes: Route[] = [
-  { path: 'debts', component: DebtListComponent, canActivate: [AuthGuard] },
-  { path: 'debts/payment', component: PaymentDetailsComponent, canActivate: [AuthGuard] }
+  { path: 'bill', component: BillListComponent, canActivate: [AuthGuard] },
+  { path: 'bill/payment', component: PaymentComponent, canActivate: [AuthGuard] }
 ]
 
 @NgModule({
@@ -27,14 +27,14 @@ const routes: Route[] = [
     FormsModule
   ],
   declarations: [
-    DebtListComponent,
-    PaymentDetailsComponent,
+    BillListComponent,
+    PaymentComponent,
     PaymentListComponent,
-    DebtsToPayComponent,
+    BillsToPayComponent,
     CreditCardComponent,
     PaymentOverviewComponent
   ], providers: [
-    DebtService
+    BillService
   ]
 })
-export class DebtModule { }
+export class BillModule { }
