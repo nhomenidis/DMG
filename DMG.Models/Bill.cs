@@ -29,43 +29,5 @@ namespace DMG.Models
 
 
 
-    public class BillMapping
-    {
-        public BillMapping(EntityTypeBuilder<Bill> entityBuilder)
-        {
-
-            //Define Primary Key
-            entityBuilder.HasKey(t => t.Id);
-
-            //Define properties in Bills DB columns
-            entityBuilder.Property(t => t.BillID)
-                         .IsRequired()
-                         .HasAnnotation("unique", true)
-                         .HasMaxLength(250);
-
-            entityBuilder.Property(t => t.Description)
-                         .IsRequired()
-                         .HasMaxLength(100);
-
-            entityBuilder.Property(t => t.Amount)
-                         .IsRequired();
-
-            entityBuilder.Property(t => t.DueDate)
-                         .IsRequired();
-
-           
-
-            //Define 1 to 1 relationship with Payments Table through Foreign Key UserID
-            entityBuilder.HasOne(x => x.Payment)
-                         .WithOne(b => b.Bill)
-                         .HasForeignKey<Payment>(b => b.BillID)
-                         .IsRequired()
-                         .OnDelete(DeleteBehavior.Cascade);      
-
-
-
-        }
-    }
-
 
 }

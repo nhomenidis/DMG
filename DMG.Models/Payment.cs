@@ -19,27 +19,5 @@ namespace DMG.Models
 
 
 
-    public class PaymentMapping
-    {
-        public PaymentMapping(EntityTypeBuilder<Payment> entityBuilder)
-        {
 
-            //Define Primary Key
-            entityBuilder.HasKey(t => t.Id);
-
-
-            //Define properties in Payment DB columns
-            entityBuilder.Property(t => t.Method)
-                         .IsRequired()
-                         .HasMaxLength(50);
-
-            entityBuilder.Property(t => t.Amount)
-                         .IsRequired();
-
-            entityBuilder.Property(t => t.DatePerformed)
-                         .IsRequired();
-
-            
-        }
-    }
 }

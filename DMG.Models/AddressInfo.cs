@@ -16,28 +16,6 @@ namespace DMG.Models
     }
 
 
-    public class AddressMapping
-    {
-        public AddressMapping(EntityTypeBuilder<AddressInfo> entityBuilder)
-        {
-
-            //Define Primary Key
-            entityBuilder.HasKey(t => t.Id);
-
-            //Define properties in AddressInfo DB columns
-            entityBuilder.Property(t => t.Address)
-                         .IsRequired()
-                         .HasMaxLength(250);
-
-            entityBuilder.Property(t => t.County)
-                         .IsRequired()
-                         .HasMaxLength(100);
-
-            
-        }
-    }
-
-
 
 
 
