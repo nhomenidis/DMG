@@ -8,9 +8,12 @@ namespace DMG.Models
     {
 
         public DateTime DatePerformed { set; get; }
-        public float Amount { get; set; }
+        public DateTime DateDue { get; set; }
+        public double Amount { get; set; }
         public string Method { set; get; }
+        public string BillId { get; set; } // foreign key
 
+        //navigation properties
         public Bill Bill { get; set; }
     }
 }
