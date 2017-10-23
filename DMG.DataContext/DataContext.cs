@@ -168,6 +168,10 @@ namespace DMG.DatabaseContext
                          .IsRequired()
                          .OnDelete(DeleteBehavior.Cascade);
 
+
+
+         var settlementTypeBuilder = modelBuilder.Entity<SettlementType>();
+
         }
 
 
