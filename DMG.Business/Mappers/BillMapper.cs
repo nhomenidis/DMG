@@ -30,7 +30,7 @@ namespace DMG.Business.Mappers
                 billdto.Id = bill.Id;
                 billdto.Amount = bill.Amount;
                 billdto.Name = bill.User.FirstName + " " + bill.User.LastName + " " + bill.Description;
-                billdto.Status = bill.Status;
+                billdto.IsPayed = bill.IsPayed;
                 billdto.DueDateTime = bill.DueDate;
               billsdtoList.Add(billdto);  
             }
