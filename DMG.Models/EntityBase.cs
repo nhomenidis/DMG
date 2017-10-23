@@ -6,6 +6,6 @@ namespace DMG.Models
 {
     public abstract class EntityBase
     {
-        public string Id { get; protected set; }
+        public string Id { get; set; }
     }
 }
