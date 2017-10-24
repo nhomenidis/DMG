@@ -6,16 +6,17 @@ namespace DMG.Models
 {
     public class User : EntityBase
     {
-        public string LastName { get; set; }
         public string FirstName { get; set; }
+        public string LastName { get; set; }
         public Boolean FirstLogin { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Vat { get; set; }
 
-        //navihgation properties
+        //navigation properties
         public ICollection<Bill> Bills { get; set; }
         public ICollection<Settlement> Settlements { get; set; }
+        public AddressInfo Adress { get; set; }
 
         public User()
         {

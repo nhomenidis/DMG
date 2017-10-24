@@ -20,7 +20,7 @@ namespace DMG.Business.Database
                 Id = "1",
                 Amount = 1000,  
                 Description = "Rock n Roll",
-                Status = "Payed",
+                IsPayed = true,
                 DueDate = DateTime.Today
 
 
@@ -30,7 +30,7 @@ namespace DMG.Business.Database
                 Id = "2",
                 Amount = 2000,
                 Description = "Blues",
-                Status = "Not Payed",
+                IsPayed = false,
                 DueDate = DateTime.Today
             };
 
@@ -39,6 +39,25 @@ namespace DMG.Business.Database
                 bill1,
                 bill2
             };
+
+            bill1.User = new User()
+            {
+                Vat = "12345",
+                FirstName = "Luca",
+                LastName = "Melis",
+                Email = "papaki@gmail.com",
+                Adress = new AddressInfo()
+                {
+                    Address = "papadias 25",
+                    County = "Tsatrapatra",
+                    Id = "1656",
+
+                },
+                Id = "12345",
+                Phone = "3354345839945",
+                Settlements = new List<Settlement>(),
+            };
+            bill2.User = bill1.User;
 
             return bills;
 
@@ -51,9 +70,31 @@ namespace DMG.Business.Database
                 Id = "3",
                 Amount = 4000000,
                 Description = "Pop",
-                Status = "Not Payed",
-                DueDate = DateTime.Today
+                IsPayed = false,
+                DueDate = DateTime.Today,
+                
+                
             };
+            bill.User = new User()
+            {
+                Vat = "12345",
+                FirstName = "Luca",
+                LastName = "Melis",
+                Email = "papaki@gmail.com",
+                Adress = new AddressInfo()
+                {
+                    Address = "papadias 25",
+                    County = "Tsatrapatra",
+                    Id = "1656",
+
+                },
+                Id = "12345",
+                Phone = "3354345839945",
+                Settlements = new List<Settlement>(),
+
+
+            };
+
             return bill;
         }
     }

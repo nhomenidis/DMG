@@ -8,7 +8,7 @@ namespace DMG.Business.Dtos
         public string Id { get; set; }
         public double Amount { get; set; }
         public DateTime DueDateTime { get; set; }
-        public string Status { get; set; }
+        public Boolean IsPayed { get; set; }
         public string Name { get; set; }
 
     }

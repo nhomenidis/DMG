@@ -9,7 +9,8 @@ namespace DMG.DatabaseContext
     {
         public DataContext CreateDbContext(string[] args)
         {
-            string path = Directory.GetCurrentDirectory().Replace("DMG.DataContext", "DMG.Api");
+            string path = Directory.GetCurrentDirectory().Replace("DMG.DatabaseContext","DMG.Api");
+
             var builder = new DbContextOptionsBuilder<DataContext>();
             IConfigurationRoot configuration = new ConfigurationBuilder()
               .SetBasePath(@path)

@@ -1,27 +1,28 @@
 ﻿using System;
+using DMG.DatabaseContext.Repositories;
 
 namespace DMG.DatabaseContext
 {
     public class UnitOfWork : IDisposable
     {
-        private DataContext context;
+        private DataContext _context;
 
         private UserRepository userRepository;
 
-        public UnitOfWork(DataContext _context)
+        public UnitOfWork(DataContext context)
         {
-            context = _context;
+            _context = context;
         }
 
         public UserRepository UserRepository
         {
-            get { return userRepository ?? new UserRepository(context); }
+            get { return userRepository ?? new UserRepository(_context); }
         }
 
 
         public void Save()
         {
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         private bool disposed = false;
@@ -32,7 +33,7 @@ namespace DMG.DatabaseContext
             {
                 if (disposing)
                 {
-                    context.Dispose();
+                    _context.Dispose();
                 }
             }
             this.disposed = true;
