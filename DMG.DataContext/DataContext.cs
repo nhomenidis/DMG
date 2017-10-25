@@ -15,8 +15,6 @@ namespace DMG.DatabaseContext
         public DbSet<Settlement> Settlements { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<AddressInfo> AddressInfos { get; set; }
-        
-        
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
