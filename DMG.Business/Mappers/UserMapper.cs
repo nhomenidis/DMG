@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Xml;
 using DMG.Business.Dtos;
 using DMG.Models;
@@ -10,10 +12,17 @@ namespace DMG.Business.Mappers
         
         public UserDto Map(User user)
         {
+            if (user == null)
+            {
+                return null;
+            }
             var userDto = new UserDto
             {
                 Vat = user.Vat,
-                Name = user.FirstName + " " + user.LastName
+                Name = user.FirstName + " " + user.LastName,
+                Email = user.Email,
+                Phone = user.Phone
+                
             };
 
             return userDto;
@@ -26,17 +35,13 @@ namespace DMG.Business.Mappers
 
             foreach (var user in users)
             {
-                var userDto = new UserDto
-                {
-                    Vat = user.Vat,
-                    Name = user.FirstName + " " + user.LastName
-                };
-                usersdtolist.Add(userDto);
-                    
-                
+                var userDto = Map(user);
+                usersdtolist.Add(userDto);       
             }
             return usersdtolist;
 
         }
+
+
     }
 }

@@ -6,14 +6,17 @@ namespace DMG.Models
 {
     public class Payment : EntityBase
     {
-
         public DateTime DatePerformed { set; get; }
-        public DateTime DateDue { get; set; }
         public double Amount { get; set; }
-        public string Method { set; get; }
-        public string BillId { get; set; } // foreign key
+        public PaymentMethod Method { set; get; }
 
-        //navigation properties
-        public Bill Bill { get; set; }
+        public Guid BillId { get; set; } // foreign key
+        public Bill Bill { get; set; } //navigation properties
+    }
+
+    public enum PaymentMethod
+    {
+        CreditCard = 0,
+        Other = 1
     }
 }

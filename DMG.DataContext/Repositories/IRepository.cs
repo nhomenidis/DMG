@@ -1,17 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using DMG.Models;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DMG.DatabaseContext.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : EntityBase
     {
+        Task<T> GetById(Guid id);
 
-        Task<T> GetById(string id);
+        Task<IEnumerable<T>> GetAll();
 
         Task<T> Insert(T entity);
 
-        T Update(T entity);
+        Task<bool> InsertMany(IEnumerable<T> entities);
 
-        Task<bool> Delete(string id);
+        Task<T> Update(T entity);
+
+        Task<bool> Delete(Guid id);
     }
 }

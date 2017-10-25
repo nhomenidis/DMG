@@ -9,6 +9,7 @@ namespace DMG.Models
         public string Address { get; set; }
         public string County { get; set; }
 
+        public Guid UserId { get; set; }
         public User User { set; get; }
     }
 }

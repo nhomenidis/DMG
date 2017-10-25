@@ -1,4 +1,9 @@
-﻿using DMG.DatabaseContext;
+﻿using DMG.Business.Dtos;
+using DMG.Business.Mappers;
+using DMG.Business.Services;
+using DMG.DatabaseContext;
+using DMG.DatabaseContext.Repositories;
+using DMG.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,9 +26,13 @@ namespace DMG.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddTransient<UnitOfWork>();
             services.AddMvc();
             services.AddCors();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IMapper<User, UserDto>, UserMapper>();
+            services.AddScoped<IMapper<CreateUserDto, User>, CreateUserDtoMapper>();
 
             services.AddSwaggerGen(c =>
             {
@@ -35,10 +44,10 @@ namespace DMG.Api
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //}
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
