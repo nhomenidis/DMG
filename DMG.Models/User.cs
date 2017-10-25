@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace DMG.Models
 {
@@ -8,8 +6,9 @@ namespace DMG.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Boolean FirstLogin { get; set; }
+        public bool FirstLogin { get; set; }
         public string Email { get; set; }
+        public string Password { get; set; }
         public string Phone { get; set; }
         public string Vat { get; set; }
 
@@ -17,11 +16,5 @@ namespace DMG.Models
         public ICollection<Bill> Bills { get; set; }
         public ICollection<Settlement> Settlements { get; set; }
         public AddressInfo Adress { get; set; }
-
-        public User()
-        {
-            Bills = new HashSet<Bill>();
-            Settlements = new HashSet<Settlement>();
-        }
     }
 }
