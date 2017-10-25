@@ -27,7 +27,7 @@ namespace DMG.Business.Mappers
             foreach(var bill in bills)
             {
               var billdto = new BillDto();
-                billdto.Id = bill.Id;
+                billdto.Id = bill.Id.ToString();
                 billdto.Amount = bill.Amount;
                 billdto.Name = bill.User.FirstName + " " + bill.User.LastName + " " + bill.Description;
                 billdto.IsPayed = bill.IsPayed;
