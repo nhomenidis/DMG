@@ -34,6 +34,12 @@ namespace DMG.Api
             services.AddScoped<IMapper<User, UserDto>, UserMapper>();
             services.AddScoped<IMapper<CreateUserDto, User>, CreateUserDtoMapper>();
 
+            services.AddScoped<IBillService, BillService>();
+            services.AddScoped<IBillRepository, BillRepository>();
+            services.AddScoped<IMapper<Bill, BillDto>, BillMapper>();
+            services.AddScoped<IMapper<CreateBillDto, Bill>, CreateBillDtoMapper>();
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "DMG API", Version = "v1" });
