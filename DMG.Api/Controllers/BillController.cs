@@ -15,17 +15,21 @@ namespace DMG.Api.Controllers
     public class BillController : Controller
     {
         private readonly IBillService _billService;
-        private readonly IUserService _userService;
+        //private readonly IUserService _userService;
 
-        public BillController(IBillService billService, IUserService userService) 
+        public BillController(IBillService billService) 
         {
             _billService = billService;
-            _userService = userService;
+           // _userService = userService;
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId(Guid id)
         {
             var billdto = await _billService.GetBill(id);
+            if (billdto == null)
+            {
+                return NotFound("Bill not found");
+            }
 
             return Ok(billdto);
 
@@ -37,6 +41,14 @@ namespace DMG.Api.Controllers
             var bills = await _billService.GetBillsbyUser(user);
             return Ok(bills);
         }
+
+        [HttpGet("User/Vat")] // get bills by User's Vat
+        public async Task<IActionResult> GetByUserVat(string Vat)
+        {
+            var bills = await _billService.GetBillsbyUserVat(Vat);
+            return Ok(bills);
+        }
+
 
         [HttpPost] // create a new bill
         public async Task<IActionResult> CreateBill([FromBody] CreateBillDto newBill)
