@@ -74,10 +74,11 @@ namespace DMG.Business.Services
 
         public async Task<bool> ChangePassword(string vat, string oldPassword, string newPassword)
         {
-            var hashedOldPassword = PasswordHasher.HashPassword(oldPassword);
-
             var user = await _userRepository.GetByVat(vat);
-            if (user == null || user.Password != hashedOldPassword)
+            var matcHashedPassword = PasswordHasher.VerifyHashedPassword(user.Password, oldPassword);
+
+            
+            if (user.Vat == null || !matcHashedPassword)
             {
                 return false;
             }
