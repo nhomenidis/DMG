@@ -11,6 +11,7 @@ namespace DMG.DatabaseContext.Repositories
     {
         Task<bool> DeleteAll();
         Task<IEnumerable<Bill>> GetByUserId(Guid userId);
+        Task<IEnumerable<Bill>> GetByUserVat(string Vat);
     }
 
     public class BillRepository : BaseRepository<Bill>, IBillRepository
@@ -24,6 +25,15 @@ namespace DMG.DatabaseContext.Repositories
         {
             var bills = await DbSet
                 .Where(bill => bill.UserId == userId)
+                .ToListAsync();
+
+            return bills;
+        }
+
+        public async Task<IEnumerable<Bill>> GetByUserVat(string Vat)
+        {
+            var bills = await DbSet
+                .Where(bill => bill.User.Vat == Vat)
                 .ToListAsync();
 
             return bills;
