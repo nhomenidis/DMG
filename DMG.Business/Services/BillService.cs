@@ -14,6 +14,7 @@ namespace DMG.Business.Services
         Task<BillDto> GetBill(Guid billId);
         Task<IEnumerable<BillDto>> GetBillsbyUser(User user);
         Task<BillDto> CreateBill(CreateBillDto newBill);
+        Task<IEnumerable<BillDto>> GetBillsbyUserVat(string Vat);
     }
 
     public class BillService : IBillService
@@ -49,11 +50,19 @@ namespace DMG.Business.Services
             return billsdto;
         }
 
+        public async Task<IEnumerable<BillDto>> GetBillsbyUserVat(string Vat)
+        {
+            var bills = await _billRepository.GetByUserVat(Vat);
+            var billsdto = _billMapper.Map(bills);
+
+            return billsdto;
+        }
         
 
         public async Task<BillDto> CreateBill(CreateBillDto newBill)
         {
             var bill = _createBillDtoMapper.Map(newBill);
+
             bill = await _billRepository.Insert(bill);
 
             return _billMapper.Map(bill);
