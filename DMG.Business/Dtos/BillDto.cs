@@ -5,7 +5,7 @@ namespace DMG.Business.Dtos
     public class BillDto
 
     {
-        public string Id { get; set; }
+        public string BillId { get; set; }
         public double Amount { get; set; }
         public DateTime DueDateTime { get; set; }
         public Boolean IsPayed { get; set; }
@@ -13,6 +13,8 @@ namespace DMG.Business.Dtos
         public string Description { get; set; }
         public string UserFirstName { get; set; }
         public string UserLastName { get; set; }
+
+        public Guid UserId { get; set; }
 
     }
 
