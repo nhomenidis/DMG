@@ -26,7 +26,7 @@ namespace DMG.Business.Mappers
                 billDto.UserLastName = bill.User?.LastName;
                 billDto.Description = bill.Description;
                 billDto.IsPayed = bill.IsPayed;
-                billDto.DueDateTime = bill.DueDate;
+                billDto.DueDate = bill.DueDate;
             }
 
             return billDto;
@@ -45,7 +45,7 @@ namespace DMG.Business.Mappers
                 billDto.UserLastName = bill.User?.LastName;
                 billDto.Description = bill.Description;
                 billDto.IsPayed = bill.IsPayed;
-                billDto.DueDateTime = bill.DueDate;
+                billDto.DueDate = bill.DueDate;
               billsdtoList.Add(billDto);  
             }
 

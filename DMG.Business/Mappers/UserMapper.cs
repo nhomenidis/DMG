@@ -19,7 +19,8 @@ namespace DMG.Business.Mappers
             var userDto = new UserDto
             {
                 Vat = user.Vat,
-                Name = user.FirstName + " " + user.LastName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
                 Email = user.Email,
                 Phone = user.Phone
                 
