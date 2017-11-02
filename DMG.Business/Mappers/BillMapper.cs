@@ -16,6 +16,7 @@ namespace DMG.Business.Mappers
             IEnumerable<BillDto> Map(IEnumerable<Bill> bills);
         }
 
+       
         public BillDto Map(Bill bill)
         {
             var billDto = new BillDto();
@@ -26,7 +27,9 @@ namespace DMG.Business.Mappers
                 billDto.UserLastName = bill.User?.LastName;
                 billDto.Description = bill.Description;
                 billDto.IsPayed = bill.IsPayed;
-                billDto.DueDate = bill.DueDate;
+                billDto.DateDue = bill.DateDue;
+                billDto.DatePayed = bill.DatePayed;
+                billDto.Vat = bill.UserVat;
             }
 
             return billDto;
@@ -38,17 +41,9 @@ namespace DMG.Business.Mappers
             var billsdtoList = new List<BillDto>();
             foreach(var bill in bills)
             {
-              var billDto = new BillDto();
-                billDto.UserId = bill.UserId;
-                billDto.Amount = bill.Amount;
-                billDto.UserFirstName = bill.User?.FirstName;
-                billDto.UserLastName = bill.User?.LastName;
-                billDto.Description = bill.Description;
-                billDto.IsPayed = bill.IsPayed;
-                billDto.DueDate = bill.DueDate;
+              var billDto = Map(bill); // Maps each bill in bills
               billsdtoList.Add(billDto);  
             }
-
             return billsdtoList;
         }
     }

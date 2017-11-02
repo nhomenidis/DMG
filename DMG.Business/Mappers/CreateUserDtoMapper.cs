@@ -9,15 +9,15 @@ namespace DMG.Business.Mappers
 {
     public class CreateUserDtoMapper : IMapper<CreateUserDto, User>
     {
-        public User Map(CreateUserDto userDto)
+        public User Map(CreateUserDto userdto)
         {
             return new User
             {
-                FirstName = userDto.FirstName,
-                LastName = userDto.LastName,
-                Email = userDto.Email,
-                Vat = userDto.Vat,
-                Password = PasswordHasher.HashPassword(userDto.Password)
+                FirstName = userdto.FirstName,
+                LastName = userdto.LastName,
+                Email = userdto.Email,
+                Vat = userdto.Vat,
+                Password = PasswordHasher.HashPassword(userdto.Password)
             };
         }
 

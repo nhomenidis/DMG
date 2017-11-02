@@ -8,21 +8,29 @@ namespace DMG.Business.Mappers
 {
     public class CreateBillDtoMapper : IMapper<CreateBillDto, Bill>
     {
-        public Bill Map(CreateBillDto billDto)
+        public Bill Map(CreateBillDto billdto)
         {
             return new Bill
             {
-                Description = billDto.Description,
-                Amount = billDto.Amount,
-                DueDate = billDto.DueDate,
-                IsPayed = billDto.IsPayed,
-                UserId = billDto.UserId
+                BillId = billdto.BillId,
+                Description = billdto.Description,
+                Amount = billdto.Amount,
+                DateDue = billdto.DateDue,
+                DatePayed = billdto.DatePayed,
+                IsPayed = billdto.IsPayed,
+                UserId = billdto.UserId
             };
         }
 
         public IEnumerable<Bill> Map(IEnumerable<CreateBillDto> billDtos)
         {
-            throw new NotImplementedException();
+            var billsList = new List<Bill>();
+            foreach (var billdto in billDtos)
+            {
+                var bill = Map(billdto);
+                billsList.Add(bill);
+            }
+            return billsList;
         }
     }
 }
