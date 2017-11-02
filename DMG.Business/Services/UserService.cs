@@ -12,6 +12,7 @@ namespace DMG.Business.Services
     public interface IUserService
     {
         Task<UserDto> GetUser(string vat);
+        Task<User> GetUserNoDto(string vat);
         Task<IEnumerable<UserDto>> GetAll();
         Task<UserDto> ChangeEmail(Guid id, string newEmail);
         Task<bool> ChangePassword(string vat, string oldPassword, string newPassword);
@@ -49,6 +50,12 @@ namespace DMG.Business.Services
             var userdto = _userMapper.Map(user);
 
             return userdto;
+        }
+
+        public async Task<User> GetUserNoDto(string vat) // returns the user without mapping him to Dto
+        {
+            var user = await _userRepository.GetByVat(vat);
+            return user;
         }
 
         public async Task<IEnumerable<UserDto>> GetAll()
