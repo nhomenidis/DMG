@@ -15,12 +15,12 @@ namespace DMG.Api.Controllers
     public class BillController : Controller
     {
         private readonly IBillService _billService;
-        //private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
-        public BillController(IBillService billService) 
+        public BillController(IBillService billService, IUserService userService) 
         {
             _billService = billService;
-           // _userService = userService;
+            _userService = userService;
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId(Guid id)
@@ -36,8 +36,9 @@ namespace DMG.Api.Controllers
         }
 
         [HttpGet("User")]
-        public async Task<IActionResult> GetByUser(User user)
+        public async Task<IActionResult> GetByUser(UserDto userDto)
         {
+            var user = await _userService.GetUserNoDto(userDto.Vat);
             var bills = await _billService.GetBillsbyUser(user);
             return Ok(bills);
         }
