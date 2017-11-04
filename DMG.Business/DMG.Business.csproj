@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FileHelpers" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DMG.AuthProvider\DMG.AuthProvider.csproj" />
     <ProjectReference Include="..\DMG.DataContext\DMG.DatabaseContext.csproj" />
     <ProjectReference Include="..\DMG.Models\DMG.Models.csproj" />

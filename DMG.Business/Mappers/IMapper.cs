@@ -5,7 +5,7 @@ namespace DMG.Business.Mappers
 {
     public interface IMapper<TInput,TOutput>
     {
-        TOutput Map(TInput input);
+        TOutput Map(TInput billdto);
         IEnumerable<TOutput> Map(IEnumerable<TInput> inputs);
     }
 }

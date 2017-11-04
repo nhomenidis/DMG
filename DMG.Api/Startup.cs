@@ -4,8 +4,10 @@ using DMG.Business.Services;
 using DMG.DatabaseContext;
 using DMG.DatabaseContext.Repositories;
 using DMG.Models;
+using FileHelpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Rewrite.Internal.IISUrlRewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +35,14 @@ namespace DMG.Api
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMapper<User, UserDto>, UserMapper>();
             services.AddScoped<IMapper<CreateUserDto, User>, CreateUserDtoMapper>();
+
+            services.AddScoped<IBillService, BillService>();
+            services.AddScoped<IBillRepository, BillRepository>();
+            services.AddScoped<IMapper<Bill, BillDto>, BillMapper>();
+            services.AddScoped<IMapper<CreateBillDto, Bill>, CreateBillDtoMapper>();
+
+            services.AddScoped<IMapper<ParseModel, User>, ParseModelMapper>();
+            services.AddScoped<IParser, Parser>();
 
             services.AddSwaggerGen(c =>
             {

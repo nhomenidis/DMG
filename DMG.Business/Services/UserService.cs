@@ -12,6 +12,7 @@ namespace DMG.Business.Services
     public interface IUserService
     {
         Task<UserDto> GetUser(string vat);
+        Task<User> GetUserNoDto(string vat);
         Task<IEnumerable<UserDto>> GetAll();
         Task<UserDto> ChangeEmail(Guid id, string newEmail);
         Task<bool> ChangePassword(string vat, string oldPassword, string newPassword);
@@ -51,6 +52,12 @@ namespace DMG.Business.Services
             return userdto;
         }
 
+        public async Task<User> GetUserNoDto(string vat) // returns the user without mapping him to Dto
+        {
+            var user = await _userRepository.GetByVat(vat);
+            return user;
+        }
+
         public async Task<IEnumerable<UserDto>> GetAll()
         {
             var allusers = await _userRepository.GetAll();
@@ -74,10 +81,11 @@ namespace DMG.Business.Services
 
         public async Task<bool> ChangePassword(string vat, string oldPassword, string newPassword)
         {
-            var hashedOldPassword = PasswordHasher.HashPassword(oldPassword);
-
             var user = await _userRepository.GetByVat(vat);
-            if (user == null || user.Password != hashedOldPassword)
+            var matcHashedPassword = PasswordHasher.VerifyHashedPassword(user.Password, oldPassword);
+
+            
+            if (user.Vat == null || !matcHashedPassword)
             {
                 return false;
             }

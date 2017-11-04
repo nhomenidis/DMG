@@ -1,48 +1,71 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Text;
-//using DMG.Business.Dtos;
-//using DMG.Business.Mappers;
-//using DMG.Models;
-//using DMG.DatabaseContext;
-//using DMG.DatabaseContext.Repositories;
+﻿using DMG.AuthProvider;
+using DMG.Business.Dtos;
+using DMG.Business.Mappers;
+using DMG.DatabaseContext.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using DMG.Models;
 
-//namespace DMG.Business.Services
-//{
-//    public interface IBillService
-//        {
-//            BillDto GetBill(string billId);
-//            IEnumerable<BillDto> GetBillsbyUser(User user);
-//        }
+namespace DMG.Business.Services
+{
+    public interface IBillService
+    {
+        Task<BillDto> GetBill(Guid billId);
+        Task<IEnumerable<BillDto>> GetBillsbyUser(User user);
+        Task<BillDto> CreateBill(CreateBillDto newBill);
+        Task<IEnumerable<BillDto>> GetBillsbyUserVat(string Vat);
+    }
 
-//    public class BillService : IBillService
-//    {
-//        public BillDto GetBill(string Id)
-//        {
-//            var billrepository = new BillRepository();
-//            var bill = billrepository.GetById(Id);
+    public class BillService : IBillService
+    {
+        private readonly IBillRepository _billRepository;
+        private readonly IMapper<Bill, BillDto> _billMapper;
+        private readonly IMapper<CreateBillDto, Bill> _createBillDtoMapper;
 
-//            var mapper = new BillMapper();
-//            var billdto = mapper.Map(bill);
+        public BillService(
+            IBillRepository billRepository,
+            IMapper<Bill, BillDto> billMapper,
+            IMapper<CreateBillDto, Bill> createBillDtoMapper)
+        {
+            _billRepository = billRepository;
+            _billMapper = billMapper;
+            _createBillDtoMapper = createBillDtoMapper;
+        }
 
-//            return billdto;
+        public async Task<BillDto> GetBill(Guid id)
+        {
+            var bill = await _billRepository.GetById(id);
+            var billdto = _billMapper.Map(bill);
 
-//        }
+            return billdto;
 
-//        public IEnumerable<BillDto> GetBillsbyUser(User user)
-//        {
-//            var billrepository = new BillRepository();
-//            var bills = billrepository.GetAll(user);
+        }
 
-//            var mapper = new BillMapper();
-//            var billsdto = mapper.Map(bills);
+        public async Task<IEnumerable<BillDto>> GetBillsbyUser(User user)
+        {
+            var bills = await _billRepository.GetByUserId(user.Id);
+            var billsdto = _billMapper.Map(bills);
 
-//            return billsdto;
-//        }
+            return billsdto;
+        }
 
+        public async Task<IEnumerable<BillDto>> GetBillsbyUserVat(string Vat)
+        {
+            var bills = await _billRepository.GetByUserVat(Vat);
+            var billsdto = _billMapper.Map(bills);
 
+            return billsdto;
+        }
+        
 
+        public async Task<BillDto> CreateBill(CreateBillDto newBill)
+        {
+            var bill = _createBillDtoMapper.Map(newBill);
 
+            bill = await _billRepository.Insert(bill);
 
-//    }
-//}
+            return _billMapper.Map(bill);
+        }
+    }
+}

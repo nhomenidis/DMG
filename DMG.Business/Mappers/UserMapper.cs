@@ -10,19 +10,20 @@ namespace DMG.Business.Mappers
     public class UserMapper : IMapper<User,UserDto>
     {
         
-        public UserDto Map(User user)
+        public UserDto Map(User billdto)
         {
-            if (user == null)
+            if (billdto == null)
             {
                 return null;
             }
             var userDto = new UserDto
             {
-                Vat = user.Vat,
-                Name = user.FirstName + " " + user.LastName,
-                Email = user.Email,
-                Phone = user.Phone
-                
+                Vat = billdto.Vat,
+                FirstName = billdto.FirstName,
+                LastName = billdto.LastName,
+                Email = billdto.Email,
+                Phone = billdto.Phone,
+                Address = billdto.Adress,
             };
 
             return userDto;

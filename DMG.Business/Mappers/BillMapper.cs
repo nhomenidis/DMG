@@ -8,14 +8,29 @@ using DMG.Models;
 
 namespace DMG.Business.Mappers
 {
-    class BillMapper : IMapper<Bill,BillDto>
+   public class BillMapper : IMapper<Bill,BillDto>
     {
+        interface IBillMapper
+        {
+            BillDto Map(Bill bill);
+            IEnumerable<BillDto> Map(IEnumerable<Bill> bills);
+        }
+
+       
         public BillDto Map(Bill bill)
         {
             var billDto = new BillDto();
-            billDto.Name = bill.User.FirstName + " " + bill.User.LastName  + " " + bill.Description;
-            billDto.Amount = bill.Amount;
-            billDto.DueDateTime = bill.DueDate;
+            {
+                billDto.UserId = bill.UserId;
+                billDto.Amount = bill.Amount;
+                billDto.UserFirstName = bill.User?.FirstName;
+                billDto.UserLastName = bill.User?.LastName;
+                billDto.Description = bill.Description;
+                billDto.IsPayed = bill.IsPayed;
+                billDto.DateDue = bill.DateDue;
+                billDto.DatePayed = bill.DatePayed;
+                billDto.Vat = bill.UserVat;
+            }
 
             return billDto;
 
@@ -26,19 +41,10 @@ namespace DMG.Business.Mappers
             var billsdtoList = new List<BillDto>();
             foreach(var bill in bills)
             {
-              var billdto = new BillDto();
-                billdto.Id = bill.Id.ToString();
-                billdto.Amount = bill.Amount;
-                billdto.Name = bill.User.FirstName + " " + bill.User.LastName + " " + bill.Description;
-                billdto.IsPayed = bill.IsPayed;
-                billdto.DueDateTime = bill.DueDate;
-              billsdtoList.Add(billdto);  
+              var billDto = Map(bill); // Maps each bill in bills
+              billsdtoList.Add(billDto);  
             }
-
             return billsdtoList;
-
-
-
         }
     }
 }
