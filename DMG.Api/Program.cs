@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using DMG.Business.Mappers;
-using DMG.Business.Services;
-using DMG.Business.Mappers;
-using DMG.DatabaseContext;
-using DMG.Models;
+﻿using DMG.DatabaseContext;
 using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using FileHelpers;
-using Microsoft.ApplicationInsights.Extensibility.Implementation;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+using System;
 
 namespace DMG.Api
 {
@@ -41,21 +28,8 @@ namespace DMG.Api
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
-
-//            var parsEngine = new FileHelperEngine<ParseModel>();
-//            var result = parsEngine.ReadFile(@"C:\Users\nhome\Desktop\CitizenDebts_100_3.txt");
-//            var parseModelMapper = new ParseModelMapper();
-//            var users = parseModelMapper.Map(result);
             
-            
-            
-  
-
             host.Run();
-
-            
-
-            //BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
