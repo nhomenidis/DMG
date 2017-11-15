@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace DMG.Models
@@ -21,10 +22,15 @@ namespace DMG.Models
 
     public enum SettlementType : short
     {
+        [Description("10% Down payment, up to 24 installments, 4.1% interest")]
         Type1 = 1,
+        [Description("10% Down payment, up to 24 installments, 4.1% interest")]
         Type2 = 2,
+        [Description("10% Down payment, up to 24 installments, 4.1% interest")]
         Type3 = 3,
+        [Description("10% Down payment, up to 24 installments, 4.1% interest")]
         Type4 = 4,
+        [Description("10% Down payment, up to 24 installments, 4.1% interest")]
         Type5 = 5
     }
 }
