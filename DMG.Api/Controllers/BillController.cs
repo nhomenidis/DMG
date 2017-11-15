@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using DMG.Business.Dtos;
-using DMG.Business.Mappers;
 using DMG.Business.Services;
-using DMG.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DMG.Api.Controllers
@@ -25,14 +20,25 @@ namespace DMG.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetbyId(Guid id)
         {
-            var billdto = await _billService.GetBill(id);
-            if (billdto == null)
+            try
             {
-                return NotFound("Bill not found");
+                var billdto = await _billService.GetBill(id);
+                if (billdto == null)
+                {
+                    return NotFound("Bill not found");
+                }
+
+                return Ok(billdto);
             }
-
-            return Ok(billdto);
-
+            catch (Exception e)
+            {
+                return StatusCode(500, new ErrorDto()
+                {
+                    Description = e.Message,
+                    StatusCode = 500,
+                    StackTrace = e.StackTrace
+                });
+            }
         }
 
         [HttpGet("User")]
