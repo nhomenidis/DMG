@@ -15,12 +15,9 @@ namespace DMG.Business.Mappers
             return new Settlement
             {
                 Type = settlementDto.Type,
-                DateRequested = settlementDto.DateRequested,
-                DownPayment = settlementDto.DownPayment,
+                DateRequested = DateTime.Now,
                 Installements = settlementDto.Installements,
-                Interest = settlementDto.Interest,
                 UserVat = settlementDto.UserVat,
-                Bills = settlementDto.BillsInSettlement
             };
         }
 
