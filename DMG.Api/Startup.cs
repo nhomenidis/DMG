@@ -1,4 +1,5 @@
-﻿using DMG.Business.Dtos;
+﻿using System.Collections.Generic;
+using DMG.Business.Dtos;
 using DMG.Business.Mappers;
 using DMG.Business.Services;
 using DMG.DatabaseContext;
@@ -31,6 +32,9 @@ namespace DMG.Api
             services.AddMvc();
             services.AddCors();
 
+            services.AddScoped<ISettlementService, SettlementService>();
+            services.AddTransient<ISettlementCalculator, SettlementCalculator>();
+
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMapper<User, UserDto>, UserMapper>();
@@ -41,7 +45,7 @@ namespace DMG.Api
             services.AddScoped<IMapper<Bill, BillDto>, BillMapper>();
             services.AddScoped<IMapper<CreateBillDto, Bill>, CreateBillDtoMapper>();
 
-            services.AddScoped<IMapper<ParseModel, User>, ParseModelMapper>();
+            services.AddScoped<IMapper<IEnumerable<ParseModel>, User>, ParseModelMapper>();
             services.AddScoped<IParser, Parser>();
 
             services.AddSwaggerGen(c =>

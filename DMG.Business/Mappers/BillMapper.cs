@@ -21,6 +21,7 @@ namespace DMG.Business.Mappers
         {
             var billDto = new BillDto();
             {
+                billDto.BillId = bill.Id;
                 billDto.UserId = bill.UserId;
                 billDto.Amount = bill.Amount;
                 billDto.UserFirstName = bill.User?.FirstName;

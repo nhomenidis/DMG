@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DMG.AuthProvider;
 using DMG.Business.Dtos;
@@ -20,12 +18,20 @@ namespace DMG.Api.Controllers
         }
 
         [HttpGet("{vat}")] // gets user info by VAT
+        [ProducesResponseType(typeof(IEnumerable<UserDto>), 200)]
+        [ProducesResponseType(typeof(ErrorDto), 404)]
         public async Task<IActionResult> Get(string vat)
         {
             var userdto = await _userService.GetUser(vat);
             if (userdto == null)
             {
-                return NotFound("User not found");
+                return NotFound(
+                    new ErrorDto()
+                    {
+                        Description = "User not found",
+                        StatusCode = 404
+                    }
+                );
             }
             return Ok(userdto);
         }

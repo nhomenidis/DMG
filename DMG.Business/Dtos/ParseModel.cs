@@ -4,11 +4,12 @@ using System.Text;
 using FileHelpers;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace DMG.Models
+namespace DMG.Business.Dtos
 {
     [IgnoreFirst(1)]
     [DelimitedRecord(";")]
-    public class ParseModel
+    public class ParseModel : IComparable<ParseModel>
+
     {
         public string VAT;
         public string FIRST_NAME;
@@ -18,17 +19,18 @@ namespace DMG.Models
         public string ADRESS;
         public string COUNTY;
 
-        [FieldConverter(ConverterKind.Guid, "D")]
-        public Guid BILL_ID;
+        [FieldConverter(ConverterKind.Guid, "D")] public Guid BILL_ID;
 
         public string DESCRIPTION;
 
-        [FieldConverter(ConverterKind.Double, "," )]
-        public double AMOUNT;
+        [FieldConverter(ConverterKind.Double, ",")] public double AMOUNT;
 
-       [FieldConverter(ConverterKind.Date, "yyyyMMdd")]
-        public DateTime DATE_DUE;
+        [FieldConverter(ConverterKind.Date, "yyyyMMdd")] public DateTime DATE_DUE;
 
+        public int CompareTo(ParseModel other)
+        {
+            return String.Compare(this.VAT, other.VAT, StringComparison.Ordinal);
+        }
     }
 }
 
