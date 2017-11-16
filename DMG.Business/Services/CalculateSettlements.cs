@@ -30,46 +30,25 @@ namespace DMG.Business.Services
                     break;
                 case SettlementType.Type2:
                     _downPayment = _totalamount * 0.2;
-                    _interest = 3.9 / (12 * 100);
+                    _interest = 3.9 / 100;
                     break;
 
                 case SettlementType.Type3:
                     _downPayment = _totalamount * 0.3;
-                    _interest = 3.6 / (12 * 100);
+                    _interest = 3.6 / 100;
                     break;
 
                 case SettlementType.Type4:
                     _downPayment = _totalamount * 0.4;
-                    _interest = 3.2 / (12 * 100);
+                    _interest = 3.2 / 100;
                     break;
 
                 case SettlementType.Type5:
                     _downPayment = _totalamount * 0.5;
-                    _interest = 2.6 / (12 * 100);
+                    _interest = 2.6 / 100;
                     break;
             }
 
-            //if (settlement.Type == SettlementType.Type1)
-            //{
-            //    _downPayment = _totalamount * 0.1;
-            //    _interest = 4.1;
-            //}
-            //if (settlement.Type == SettlementType.Type2)
-            //{
-            //    _downPayment = _totalamount * 0.2;
-            //}
-            //if (settlement.Type == SettlementType.Type3)
-            //{
-            //    _downPayment = _totalamount * 0.3;
-            //}
-            //if (settlement.Type == SettlementType.Type4)
-            //{
-            //    _downPayment = _totalamount * 0.4;
-            //}
-            //if (settlement.Type == SettlementType.Type5)
-            //{
-            //    _downPayment = _totalamount * 0.5;
-            //}
 
             var installementAmmount = Calculator(settlement);
             return new CalculatedSettlementDto()
@@ -89,7 +68,7 @@ namespace DMG.Business.Services
 
             double installement = ((_totalamount - _downPayment) * _interest *
                                   Math.Pow(1 + _interest, _installements)) /
-                                  (Math.Pow(1 + _interest, _installements - 1));
+                                  ((Math.Pow(1 + _interest, _installements)) - 1);
 
             return installement;
         }

@@ -33,16 +33,3 @@ namespace DMG.Business.Dtos
         }
     }
 }
-
-
-//        public string VAT 
-//        public string FIRST_NAME { get; set; }
-//        public string LAST_NAME { get; set; }
-//        public string EMAIL { get; set; }
-//        public string PHONE { get; set; }
-//        public string ADRESS { get; set; }
-//        public string COUNTY { get; set; }
-//        public string BILL_ID { get; set; }
-//        public string DESCRIPTION { get; set; }
-//        public string AMOUNT { get; set; }
-//        public string DATE_DUE { set; get; }
